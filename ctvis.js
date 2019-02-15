@@ -1,5 +1,5 @@
 
-function ct(ct_data, ct_scale, hits,hit_colors,container) {
+function ct(ct_data, ct_scale,container) {
 	var ct_data = ct_data; 
     //var hits = hits;
     //var hit_colors = hit_colors;
@@ -10,12 +10,15 @@ function ct(ct_data, ct_scale, hits,hit_colors,container) {
   var ui = $("#" + container);
     ui.append('<div id="ctHits">')
     var ctHits = $("#ctHits");
-    ctHits.append("<h3>ClusterTools Hits</h3>")
+    ctHits.append("<h3>Cluster Comparison</h3>")
   for (var i in ct_data) {
     ctHits.append('<div id="hit-' + i + '">')
     var hitDiv = $("#hit-"+i);
-    
-  	hitDiv.append("<h4>" + ct_data[i]["id"] + " (Location: " + ct_data[i]["start"] + "-" + ct_data[i]["end"] + ", Size: " + ct_data[i]["size"] + " nts)" + "</h4>");
+    if (ct_data[i].hasOwnProperty("dist")) {
+        hitDiv.append("<h4>" + ct_data[i]["id"] + " - Distance to Top Cluster: " + ct_data[i]["dist"] + " - (Location: " + ct_data[i]["start"] + "-" + ct_data[i]["end"] + ", Size: " + ct_data[i]["size"] + " nts)" + " </h4>");}
+        else{
+  	hitDiv.append("<h4>" + ct_data[i]["id"] + " (Location: " + ct_data[i]["start"] + "-" + ct_data[i]["end"] + ", Size: " + ct_data[i]["size"] + " nts)" 
+                  + "</h4>");}
     var svg = $(Arrower.drawClusterToolsSVG(ct_data[i],ct_scale));
     svg.css("clear", "both");
     svg.addClass("arrower-svg");

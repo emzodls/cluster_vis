@@ -40,9 +40,9 @@ if (cluster.hasOwnProperty("orfs")) {
     $(pol.node).mouseover({orf: orf}, function(handler){
         var start = handler.data.orf.start + cluster.offset;
         var end = handler.data.orf.end + cluster.offset;
-        if (handler.data.orf.hasOwnProperty("hitName")) {
-            if (handler.data.orf.hasOwnProperty("blastHitScore")){
-          Arrower.showToolTip("ORF: " + handler.data.orf.id + "<br/>" + start + " - " + end + "<br/>" + "Hit: " + handler.data.orf.hitName + " (" + handler.data.orf.blastHitScore + ")", handler);}
+        if (handler.data.orf.hasOwnProperty("pair")) {
+            if (handler.data.orf.hasOwnProperty("dist")){
+          Arrower.showToolTip("ORF: " + handler.data.orf.id + "<br/>" + start + " - " + end + "<br/>" + "Similar to: " + handler.data.orf.pair + " (" + handler.data.orf.dist + ")", handler);}
             else {
                 Arrower.showToolTip("ORF: " + handler.data.orf.id + "<br/>" + start + " - " + end + "<br/>" + "Hit: " + handler.data.orf.hitName,handler);
             }
